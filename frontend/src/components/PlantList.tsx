@@ -1,23 +1,35 @@
 import { useEffect } from 'react';
 import { usePlantStore } from '../store/plantStore';
+import LoadingIndicator from './LoadingIndicator';
+import EmptyState from './EmptyState';
+import PlantCard from './PlantCard';
 
 export function PlantList() {
-  const { plants, fetchPlants } = usePlantStore();
+  const { plants, fetchPlants, isLoading } = usePlantStore();
 
   useEffect(() => {
     fetchPlants();
   }, [fetchPlants]);
 
+  if (isLoading) {
+    return <LoadingIndicator />;
+  }
+
+  if (plants.length === 0) {
+    return <EmptyState message="Du hast noch keine Pflanzen hinzugefügt." />;
+  }
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+    <div className="grid gap-6 sm:grid-cols-2">
       {plants.map((plant) => (
-        <div key={plant.id} className="bg-white rounded shadow p-4">
-          <img src={plant.image} alt={plant.name} className="w-full h-40 object-cover rounded" />
-          <h2 className="text-xl font-bold mt-2">{plant.name}</h2>
-          <p className="italic text-gray-600">{plant.latinName}</p>
-          <p>Licht: {plant.light}</p>
-          <p>Wasser: {plant.water}</p>
-        </div>
+        <PlantCard
+          key={plant.id}
+          name={plant.name}
+          waterNeed={plant.water}
+          lightNeed={plant.light}
+          imageUrl={plant.image}
+          badge={plant.latinName}
+        />
       ))}
     </div>
   );
