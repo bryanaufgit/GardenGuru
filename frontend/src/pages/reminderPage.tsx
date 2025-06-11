@@ -77,6 +77,21 @@ export default function ReminderPage() {
   const [showCompleted, setShowCompleted] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
+  if (authLoading) {
+    return (
+      <div className="flex items-center gap-2 mb-4">
+        <svg className="animate-spin h-5 w-5 text-primary" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+        </svg>
+        <span>Lade Aufgaben ...</span>
+      </div>
+    );
+  }
+  if (!token) {
+    return <div>Bitte einloggen, um Aufgaben zu sehen.</div>;
+  }
+
   useEffect(() => {
     if (!authLoading && token) {
       loadReminders();
