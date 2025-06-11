@@ -77,6 +77,16 @@ export default function ReminderPage() {
   const [showCompleted, setShowCompleted] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
+  // Watchdog-Reload für loadReminders (ganz oben, nach useState/hooks)
+  useEffect(() => {
+    if (!authLoading && token && reminders.length === 0) {
+      const timeout = setTimeout(() => {
+        loadReminders();
+      }, 1500);
+      return () => clearTimeout(timeout);
+    }
+  }, [authLoading, token, reminders.length, loadReminders]);
+
   if (authLoading) {
     return (
       <div className="flex items-center gap-2 mb-4">
