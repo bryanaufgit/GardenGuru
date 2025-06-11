@@ -8,7 +8,7 @@
 // - Ladeanimation: Spinner statt Text
 // - Toast: Erfolgsmeldung nach "Als erledigt markieren"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useReminderStore } from "../store/reminderStore";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../store/userStore";
@@ -77,9 +77,12 @@ export default function ReminderPage() {
   const [showCompleted, setShowCompleted] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
+  const didLoadRef = useRef(false);
+
   useEffect(() => {
-    if (!authLoading && token) {
+    if (!authLoading && token && !didLoadRef.current) {
       loadReminders();
+      didLoadRef.current = true;
     }
   }, [authLoading, token, loadReminders]);
 

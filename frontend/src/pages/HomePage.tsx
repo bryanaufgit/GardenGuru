@@ -9,7 +9,7 @@ function isMarkCompleteAllowed(reminder: any) {
 }
 
 import { useUserStore } from "../store/userStore";
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useReminderStore } from "../store/reminderStore";
 import { usePlantStore } from "../store/plantStore";
@@ -23,11 +23,13 @@ export default function HomePage() {
   const { wishlist } = useWishlistStore();
   const navigate = useNavigate();
   const { loading: authLoading, token } = useUserStore();
+  const didLoadRef = useRef(false);
 
   useEffect(() => {
-    if (!authLoading && token) {
+    if (!authLoading && token && !didLoadRef.current) {
       fetchPlants();
       loadReminders();
+      didLoadRef.current = true;
     }
   }, [authLoading, token, fetchPlants, loadReminders]);
 
