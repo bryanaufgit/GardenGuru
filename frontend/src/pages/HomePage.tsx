@@ -8,6 +8,7 @@ function isMarkCompleteAllowed(reminder: any) {
   return diff <= 1;
 }
 
+import { useUserStore } from "../store/userStore";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useReminderStore } from "../store/reminderStore";
@@ -21,11 +22,14 @@ export default function HomePage() {
   const { plants, fetchPlants } = usePlantStore();
   const { wishlist } = useWishlistStore();
   const navigate = useNavigate();
+  const { loading: authLoading, token } = useUserStore();
 
   useEffect(() => {
-    fetchPlants();
-    loadReminders();
-  }, []);
+    if (!authLoading && token) {
+      fetchPlants();
+      loadReminders();
+    }
+  }, [authLoading, token, fetchPlants, loadReminders]);
 
   // Quick-Stats
   const openReminders = reminders.filter(r => !r.completed);
@@ -91,7 +95,7 @@ export default function HomePage() {
         {/* Aufgaben-Boxen (2/3 Spalten) */}
         <div className="lg:col-span-2 space-y-4">
           <SectionTitle>Anstehende Aufgaben</SectionTitle>
-          {loading && <div>Lade Aufgaben...</div>}
+          {(authLoading || loading) && <div>Lade Aufgaben...</div>}
           {nextReminders.length === 0 && !loading && (
             <div className="bg-white p-6 rounded-xl shadow text-gray-600 text-center">Keine offenen Aufgaben!</div>
           )}
