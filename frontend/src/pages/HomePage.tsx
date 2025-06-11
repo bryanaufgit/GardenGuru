@@ -78,11 +78,15 @@ export default function HomePage() {
           Impressum
         </a>
       </div>
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-primary">🌱GardenGuru</h1>
-        <p className="text-gray-600">Beta Testing 0.9.2</p>
+      <div className="text-center mb-8 flex justify-center items-center gap-3">
+        <img
+          src="/logos/Logo_Bild_transparent.png"
+          alt="GardenGuru Logo"
+          className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+          draggable={false}
+        />
+        <h1 className="text-3xl font-bold text-primary">GardenGuru</h1>
       </div>
-
       <div className="flex flex-col-reverse lg:grid lg:grid-cols-3 gap-8">
         {/* Aufgaben-Boxen (2/3 Spalten) */}
         <div className="lg:col-span-2 space-y-4">
