@@ -1,0 +1,20 @@
+{
+  "short_name": "GardenGuru",
+  "name": "GardenGuru",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f7faf7",
+  "theme_color": "#295532",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "logos/Logo_Bild_transparent.png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "logos/Logo_Bild_transparent.png"
+    }
+  ]
+}
