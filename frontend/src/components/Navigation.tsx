@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { Home, Search, Leaf, Heart, User } from "lucide-react";
+import { Home, Leaf, User, Library, ListTodo} from "lucide-react";
 
 const navItems = [
   { to: "/", icon: <Home size={24} className="text-white/80 group-hover:text-primary-dark group-[.bg-primary-light]:text-primary-dark" />, label: "Start" },
-  { to: "/search", icon: <Search size={24} className="text-white/80 group-hover:text-primary-dark group-[.bg-primary-light]:text-primary-dark" />, label: "Suche" },
   { to: "/MyPlants", icon: <Leaf size={24} className="text-white/80 group-hover:text-primary-dark group-[.bg-primary-light]:text-primary-dark" />, label: "Meine Pflanzen" },
-  { to: "/wishlist", icon: <Heart size={24} className="text-white/80 group-hover:text-primary-dark group-[.bg-primary-light]:text-primary-dark" />, label: "Wunschliste" },
+  { to: "/reminders", icon: <ListTodo size={24} className="text-white/80 group-hover:text-primary-dark group-[.bg-primary-light]:text-primary-dark" />, label: "Erinnerungen" },
+  { to : "/catalogue", icon: <Library size={24} className="text-white/80 group-hover:text-primary-dark group-[.bg-primary-light]:text-primary-dark" />, label: "Pflanzenkatalog" },
   { to: "/profile", icon: <User size={24} className="text-white/80 group-hover:text-primary-dark group-[.bg-primary-light]:text-primary-dark" />, label: "Profil" },
 ];
 

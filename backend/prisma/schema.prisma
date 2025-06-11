@@ -15,6 +15,13 @@ model Plant {
   water     String
   image     String
 
+  /// Intervall für Gießen (Tage)
+  wateringInterval     Int     @default(7)
+  /// Intervall für Düngen (Tage)
+  fertilizingInterval  Int     @default(30)
+  /// Intervall für Umtopfen (Tage)
+  repottingInterval    Int     @default(365)
+
   owner     User?     @relation("OwnedPlants", fields: [ownerId], references: [id])
   ownerId   String?
 
@@ -42,14 +49,21 @@ model Wishlist {
   plantId  Int
 }
 
+enum ReminderType {
+  WATERING
+  FERTILIZING
+  REPOTTING
+}
+
 model Reminder {
-  id        Int      @id @default(autoincrement())
-  user      User     @relation(fields: [userId], references: [id])
+  id        Int          @id @default(autoincrement())
+  user      User         @relation(fields: [userId], references: [id])
   userId    String
-  plant     Plant    @relation(fields: [plantId], references: [id])
+  plant     Plant        @relation(fields: [plantId], references: [id])
   plantId   Int
   date      DateTime
-  watered   Boolean  @default(false)
+  type      ReminderType @default(WATERING)
+  completed Boolean      @default(false)
 }
 
 model Stat {
@@ -68,4 +82,3 @@ model ExpertTip {
   plant     Plant?  @relation(fields: [plantId], references: [id])
   plantId   Int?
 }
-

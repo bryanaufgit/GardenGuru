@@ -20,7 +20,7 @@ export function PlantList() {
   }
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2">
+    {/* <div className="grid gap-6 sm:grid-cols-2">
       {plants.map((plant) => (
         <PlantCard
           key={plant.id}
@@ -31,6 +31,6 @@ export function PlantList() {
           badge={plant.latinName}
         />
       ))}
-    </div>
+    </div> */}
   );
 }
