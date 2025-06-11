@@ -6,7 +6,7 @@
 import { Plant } from '../types/plant';
 import { useUserStore } from '../store/userStore';
 
-const API_BASE_URL = 'http://localhost:4000/api/wishlist';
+const API_BASE_URL = 'https://gardenguru-2v3b.onrender.com/api/wishlist';
 
 export async function getWishlist(): Promise<Plant[]> {
   const token = useUserStore.getState().token;
