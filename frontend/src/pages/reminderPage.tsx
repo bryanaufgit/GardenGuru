@@ -78,10 +78,10 @@ export default function ReminderPage() {
   const [toast, setToast] = useState<string | null>(null);
 
   useEffect(() => {
-    if (token) {
+    if (!authLoading && token) {
       loadReminders();
     }
-  }, [token, loadReminders]);
+  }, [authLoading, token, loadReminders]);
 
   const handleComplete = async (id: number) => {
     try {

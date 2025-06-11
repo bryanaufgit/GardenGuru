@@ -6,7 +6,7 @@ export default function Search() {
   return (
     <PageWrapper>
       <SectionTitle>Pflanzensuche</SectionTitle>
-      <SearchInput />
+      <SearchInput onSearch={() => {}} />
     </PageWrapper>
   );
 }
