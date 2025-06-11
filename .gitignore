@@ -1,2 +1,9 @@
 .env
 serviceAccountKey.json
+dist/
+build/
+node_modules/
+*.log
+.DS_Store
+.vscode/
+prisma/client/
