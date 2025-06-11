@@ -142,7 +142,7 @@ export default function ReminderPage() {
         </div>
       )}
       {!authLoading && error && <p className="text-red-500">{error}</p>}
-      {filteredReminders.length === 0 && !loading && <p>Du hast aktuell keine Aufgaben.</p>}
+      {filteredReminders.length === 0 && !loading && token && <p>Du hast aktuell keine Aufgaben.</p>}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {filteredReminders.map((reminder) => {
           const { color, icon } = getCardStyleAndIcon(reminder.type);
