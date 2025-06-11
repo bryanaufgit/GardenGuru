@@ -72,7 +72,7 @@ function getDueLabel(reminderDateStr: string, completed: boolean) {
 }
 
 export default function ReminderPage() {
-  const { loading: authLoading, token } = useUserStore();
+  const { user, loading: authLoading, token } = useUserStore();
   const { reminders, loading, error, loadReminders, complete } = useReminderStore();
   const [showCompleted, setShowCompleted] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -88,7 +88,7 @@ export default function ReminderPage() {
       </div>
     );
   }
-  if (!token) {
+  if (!authLoading && !user) {
     return <div>Bitte einloggen, um Aufgaben zu sehen.</div>;
   }
 
