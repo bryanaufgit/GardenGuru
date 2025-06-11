@@ -17,7 +17,7 @@ export default function Navigation({ variant }: Props) {
   const isBottom = variant === "bottom";
   const baseStyles = "bg-sidebar text-primary-dark";
   const navClass = isBottom
-  ? `fixed bottom-0 left-0 right-0 h-16 flex justify-around items-center md:hidden ${baseStyles}`
+  ? `fixed bottom-0 left-0 right-0 h-16 flex justify-around items-center md:hidden z-100 ${baseStyles}`
   : `hidden md:flex md:fixed md:top-0 md:left-0 md:w-64 md:h-screen md:flex-col md:items-start md:space-y-6 md:p-4 ${baseStyles}`;
 
   return (
