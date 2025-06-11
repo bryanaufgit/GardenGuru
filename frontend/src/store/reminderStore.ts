@@ -20,8 +20,10 @@ export const useReminderStore = create<ReminderState>((set, get) => ({
     try {
       const data = await getReminders();
       set({ reminders: data, loading: false });
-    } catch (err) {
-      set({ error: "Fehler beim Laden der Aufgaben.", loading: false });
+    } catch (err: any) {
+      console.error("ReminderStore error", err);
+      const errorMsg = err?.response?.data?.message || err?.message || "Fehler beim Laden der Aufgaben.";
+      set({ error: errorMsg, loading: false });
     }
   },
   addReminder: async (data) => {
@@ -29,8 +31,10 @@ export const useReminderStore = create<ReminderState>((set, get) => ({
     try {
       await createReminder(data);
       await get().loadReminders();
-    } catch (err) {
-      set({ error: "Fehler beim Anlegen der Aufgabe.", loading: false });
+    } catch (err: any) {
+      console.error("ReminderStore error", err);
+      const errorMsg = err?.response?.data?.message || err?.message || "Fehler beim Laden der Aufgaben.";
+      set({ error: errorMsg, loading: false });
     }
   },
   complete: async (id) => {
@@ -38,8 +42,10 @@ export const useReminderStore = create<ReminderState>((set, get) => ({
     try {
       await completeReminder(id);
       await get().loadReminders();
-    } catch (err) {
-      set({ error: "Fehler beim Abschließen der Aufgabe.", loading: false });
+    } catch (err: any) {
+      console.error("ReminderStore error", err);
+      const errorMsg = err?.response?.data?.message || err?.message || "Fehler beim Laden der Aufgaben.";
+      set({ error: errorMsg, loading: false });
     }
   },
   remove: async (id) => {
@@ -47,8 +53,10 @@ export const useReminderStore = create<ReminderState>((set, get) => ({
     try {
       await deleteReminder(id);
       await get().loadReminders();
-    } catch (err) {
-      set({ error: "Fehler beim Löschen der Aufgabe.", loading: false });
+    } catch (err: any) {
+      console.error("ReminderStore error", err);
+      const errorMsg = err?.response?.data?.message || err?.message || "Fehler beim Laden der Aufgaben.";
+      set({ error: errorMsg, loading: false });
     }
   }
 }));
