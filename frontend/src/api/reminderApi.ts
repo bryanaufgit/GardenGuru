@@ -11,7 +11,7 @@ export type Reminder = {
   completed: boolean;
 };
 
-const API_BASE_URL = 'http://localhost:4000/api/reminders';
+const API_BASE_URL = 'https://gardenguru-2v3b.onrender.com/api/reminders';
 
 export async function getReminders(): Promise<Reminder[]> {
   const token = useUserStore.getState().token;

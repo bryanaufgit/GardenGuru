@@ -15,7 +15,7 @@ export const usePlantStore = create<PlantState>((set) => ({
   fetchPlants: async () => {
     set({ isLoading: true, error: undefined });
     try {
-      const res = await fetch('http://localhost:4000/api/plants');
+      const res = await fetch('https://gardenguru-2v3b.onrender.com/api/plants');
       if (!res.ok) throw new Error("Fehler beim Laden");
       const data = await res.json();
       set({ plants: data, isLoading: false, error: undefined });
