@@ -18,7 +18,6 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 app.use('/api/users', userRouter);
-app.use('/images', express.static('public/images'));
 app.use("/api/plants", plantRoutes);
 app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/reminders", reminderRoutes);
@@ -27,7 +26,7 @@ app.use("/api/reminders", reminderRoutes);
 // Testroute
 
 app.listen(PORT, () => {
-  console.log(`Server läuft auf http://localhost:${PORT}`);
+  console.log(`Server läuft auf Port ${PORT}`);
 });
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
