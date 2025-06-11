@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const MAX_HISTORY = 5;
 const STORAGE_KEY = "plantSearchHistory";
 
-export default function SearchInput() {
+type Props = {
+  onSearch: (term: string) => void;
+};
+
+export default function SearchInput({ onSearch }: Props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -19,8 +24,9 @@ export default function SearchInput() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedHistory));
     setSearchHistory(updatedHistory);
 
-    console.log("Suche ausgeführt:", searchTerm);
+    onSearch(searchTerm.trim()); // <-- jetzt wirklich Suche auslösen
     setSearchTerm("");
+    inputRef.current?.focus();
   };
 
   return (
@@ -33,6 +39,7 @@ export default function SearchInput() {
         className="flex flex-col sm:flex-row gap-2"
       >
         <input
+          ref={inputRef}
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -55,7 +62,11 @@ export default function SearchInput() {
             {searchHistory.map((term, idx) => (
               <li key={idx}>
                 <button
-                  onClick={() => setSearchTerm(term)}
+                  onClick={() => {
+                    setSearchTerm(term);
+                    onSearch(term); // Suche auslösen bei Klick auf History-Button
+                    inputRef.current?.focus();
+                  }}
                   aria-label={`Suche nach ${term}`}
                   className="px-3 py-1 bg-gray-100 text-sm rounded-full hover:bg-gray-200"
                 >

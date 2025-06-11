@@ -1,7 +1,11 @@
 // src/api/authApi.ts
 import { auth } from "../lib/firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
 
+export function sendPasswordReset(email: string) {
+  return sendPasswordResetEmail(auth, email);
+}
 export const register = (email: string, password: string) =>
   createUserWithEmailAndPassword(auth, email, password);
 
