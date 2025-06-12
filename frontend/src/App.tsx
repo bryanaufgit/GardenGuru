@@ -23,19 +23,6 @@ import { useUserStore } from "./store/userStore";
 export default function App() {
   const { loading } = useUserStore();
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center">
-        <svg className="animate-spin h-8 w-8 text-primary" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-        </svg>
-        <span className="ml-3 text-lg">Lade GardenGuru ...</span>
-        <span className="mt-6 text-sm text-gray-500">Falls die App nach 5 Sekunden nicht lädt, bitte Seite neu laden.</span>
-      </div>
-    );
-  }
-
   return (
     <BrowserRouter>
       <AuthListener />
