@@ -9,7 +9,15 @@ export function AuthListener() {
   const setLoading = useUserStore((state) => state.setLoading);
 
   useEffect(() => {
+    let didFinish = false;
+    // Timeout-Failsafe (3 Sekunden)
+    const timeout = setTimeout(() => {
+      if (!didFinish) setLoading(false);
+    }, 3000);
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      didFinish = true;
+      clearTimeout(timeout);
       if (user) {
         user.getIdToken().then((token) => {
           setUser(user, token);
@@ -20,7 +28,11 @@ export function AuthListener() {
         setLoading(false);
       }
     });
-    return () => unsubscribe();
+
+    return () => {
+      clearTimeout(timeout);
+      unsubscribe();
+    };
   }, [setUser, setLoading]);
 
   return null;
