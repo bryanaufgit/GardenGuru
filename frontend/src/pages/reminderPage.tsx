@@ -72,41 +72,16 @@ function getDueLabel(reminderDateStr: string, completed: boolean) {
 }
 
 export default function ReminderPage() {
-  const { user, loading: authLoading, token } = useUserStore();
+  const { loading: authLoading, token } = useUserStore();
   const { reminders, loading, error, loadReminders, complete } = useReminderStore();
   const [showCompleted, setShowCompleted] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
-  // Watchdog-Reload für loadReminders (ganz oben, nach useState/hooks)
   useEffect(() => {
     if (!authLoading && token && reminders.length === 0) {
-      const timeout = setTimeout(() => {
-        loadReminders();
-      }, 1500);
-      return () => clearTimeout(timeout);
-    }
-  }, [authLoading, token, reminders.length, loadReminders]);
-
-  if (authLoading) {
-    return (
-      <div className="flex items-center gap-2 mb-4">
-        <svg className="animate-spin h-5 w-5 text-primary" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-        </svg>
-        <span>Lade Aufgaben ...</span>
-      </div>
-    );
-  }
-  if (!authLoading && !user) {
-    return <div>Bitte einloggen, um Aufgaben zu sehen.</div>;
-  }
-
-  useEffect(() => {
-    if (!authLoading && token) {
       loadReminders();
     }
-  }, [authLoading, token, loadReminders]);
+  }, [authLoading, token, reminders.length, loadReminders]);
 
   const handleComplete = async (id: number) => {
     try {
@@ -152,7 +127,7 @@ export default function ReminderPage() {
         </div>
       )}
       {!authLoading && error && <p className="text-red-500">{error}</p>}
-      {filteredReminders.length === 0 && !loading && token && <p>Du hast aktuell keine Aufgaben.</p>}
+      {filteredReminders.length === 0 && !loading && <p>Du hast aktuell keine Aufgaben.</p>}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {filteredReminders.map((reminder) => {
           const { color, icon } = getCardStyleAndIcon(reminder.type);
@@ -178,6 +153,7 @@ export default function ReminderPage() {
                 </Link>
                 <span className="text-xs text-gray-600 mb-2 truncate max-w-[180px]">{reminder.plant.latinName || ""}</span>
                 <span className="text-sm font-semibold mt-1">{getTaskText(reminder)}</span>
+                {getDueLabel(reminder.date, reminder.completed)}
               </div>
               {!reminder.completed && (
                 <button
