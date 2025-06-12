@@ -100,6 +100,16 @@ export default function ReminderPage() {
   return (
     <div className="p-4 max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">Meine Aufgaben</h1>
+      <div className="flex justify-end mb-2">
+        <button
+          aria-label="Seite neu laden"
+          onClick={() => window.location.reload()}
+          className="p-2 rounded-full hover:bg-primary-light focus:outline-none transition"
+          title="Seite neu laden"
+        >
+          <span className="text-xl">🔄</span>
+        </button>
+      </div>
       <div className="mb-4 flex gap-2 items-center">
         <input
           id="toggle-completed"

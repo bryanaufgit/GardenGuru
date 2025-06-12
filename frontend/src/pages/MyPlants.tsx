@@ -20,6 +20,16 @@ export default function MyPlants() {
   return (
     <PageWrapper>
       <SectionTitle>Meine Pflanzen</SectionTitle>
+      <div className="flex justify-end mb-2">
+        <button
+          aria-label="Seite neu laden"
+          onClick={() => window.location.reload()}
+          className="p-2 rounded-full hover:bg-primary-light focus:outline-none transition"
+          title="Seite neu laden"
+        >
+          <span className="text-xl">🔄</span>
+        </button>
+      </div>
       {(authLoading || loading) && <p>Lade deine Pflanzen ...</p>}
       {!authLoading && error && <p className="text-red-500">{error}</p>}
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
