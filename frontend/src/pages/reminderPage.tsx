@@ -9,6 +9,7 @@
 // - Toast: Erfolgsmeldung nach "Als erledigt markieren"
 
 import { useEffect, useState } from "react";
+import { RefreshCw } from "lucide-react";
 import { useReminderStore } from "../store/reminderStore";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../store/userStore";
@@ -104,10 +105,11 @@ export default function ReminderPage() {
         <button
           aria-label="Seite neu laden"
           onClick={() => window.location.reload()}
-          className="p-2 rounded-full hover:bg-primary-light focus:outline-none transition"
+          className="p-2 rounded-full bg-primary/90 hover:bg-primary text-white shadow focus:outline-none transition"
           title="Seite neu laden"
+          type="button"
         >
-          <span className="text-xl">🔄</span>
+          <RefreshCw className="w-5 h-5" />
         </button>
       </div>
       <div className="mb-4 flex gap-2 items-center">

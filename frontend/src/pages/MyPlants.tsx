@@ -1,3 +1,4 @@
+import { RefreshCw } from "lucide-react";
 import PlantCard from "../components/PlantCard";
 import PageWrapper from "../components/PageWrapper";
 import SectionTitle from "../components/SectionTitle";
@@ -24,10 +25,11 @@ export default function MyPlants() {
         <button
           aria-label="Seite neu laden"
           onClick={() => window.location.reload()}
-          className="p-2 rounded-full hover:bg-primary-light focus:outline-none transition"
+          className="p-2 rounded-full bg-primary/90 hover:bg-primary text-white shadow focus:outline-none transition"
           title="Seite neu laden"
+          type="button"
         >
-          <span className="text-xl">🔄</span>
+          <RefreshCw className="w-5 h-5" />
         </button>
       </div>
       {(authLoading || loading) && <p>Lade deine Pflanzen ...</p>}
