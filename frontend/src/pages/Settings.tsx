@@ -65,7 +65,7 @@ export default function SettingsPage() {
           <div className="flex items-center justify-between">
             <span className="font-semibold">Feedback</span>
             <a
-              href="mailto:info@gardenguru.de?subject=Feedback zu GardenGuru"
+              href="mailto:inbox@bryanpyka.de?subject=Feedback zu GardenGuru"
               className="text-primary underline font-medium"
               target="_blank" rel="noopener noreferrer"
             >
