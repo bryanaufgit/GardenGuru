@@ -100,7 +100,7 @@ export default function PlantCard({
           aria-label={`Details zu ${plant.name}`}
           className="text-sm text-primary-dark hover:underline focus:outline-none focus:ring-2 focus:ring-primary"
         >
-          Details
+          &nbsp;
         </button>
       )}
     </article>
