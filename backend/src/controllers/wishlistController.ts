@@ -48,7 +48,7 @@ export const addToWishlist = async (req: Request, res: Response) => {
     if (!plant) return res.status(404).json({ message: "Pflanze nicht gefunden" });
 
     // Reminder für alle Typen per Servicefunktion anlegen
-    await createNextReminder({ userId, plant, type: ReminderType.WATERING, intervalDays: plant.wateringInterval });
+    await createNextReminder({ userId, plant, type: ReminderType.WATERING, intervalDays: 0 });
     await createNextReminder({ userId, plant, type: ReminderType.FERTILIZING, intervalDays: plant.fertilizingInterval });
     await createNextReminder({ userId, plant, type: ReminderType.REPOTTING, intervalDays: plant.repottingInterval });
 
