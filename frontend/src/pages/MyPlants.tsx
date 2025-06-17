@@ -40,7 +40,7 @@ export default function MyPlants() {
           <PlantCard
             key={plant.id}
             plant={plant}
-            badge="Entfernen"
+            //badge="Entfernen"
             onClick={() => removePlant(plant.id)}
           />
         ))}
