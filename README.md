@@ -5,14 +5,14 @@
 
 ---
 
-## 🚀 Projektüberblick
+##  Projektüberblick
 
 GardenGuru ist eine moderne, cloudbasierte Webanwendung, die Nutzer:innen hilft, ihre Zimmerpflanzen optimal zu pflegen.  
 Mit übersichtlichem Dashboard, Pflanzenkatalog, personalisierten Erinnerungen (Gießen, Düngen, Umtopfen), Wunschliste, Tipps und Levelsystem.
 
 ---
 
-## ✨ Hauptfunktionen
+##  Hauptfunktionen
 
 - **Persönlicher Pflanzenkatalog:** Eigene Pflanzen hinzufügen, Details einsehen, verwalten  
 - **Erinnerungen:** Automatische To-dos fürs Gießen, Düngen, Umtopfen  
@@ -24,7 +24,7 @@ Mit übersichtlichem Dashboard, Pflanzenkatalog, personalisierten Erinnerungen (
 
 ---
 
-## 🛠️ Tech-Stack
+##  Tech-Stack
 
 - **Frontend:** React (TypeScript), Tailwind CSS, Zustand, Vite  
 - **Backend:** Node.js, Express.js, Prisma ORM  
@@ -38,9 +38,21 @@ Mit übersichtlichem Dashboard, Pflanzenkatalog, personalisierten Erinnerungen (
 
 ---
 
-## 🔒 Sicherheit & Datenschutz
+## Sicherheit & Datenschutz
 
 - Alle Verbindungen sind TLS/SSL-verschlüsselt
 - Keine sensiblen Keys im Repo:  
   **Alle Zugangsdaten (.env, serviceAccountKey.json) sind geheim & werden als Secret-Files bei Render/Vercel genutzt**
 - Siehe [Impressum & Datenschutzerklärung](https://gardenguru-psi.vercel.app/impressum) in der App
+
+
+📣 Kontakt & Impressum
+
+App-Demo: https://gardenguru-psi.vercel.app/
+Impressum: Impressum & Datenschutz
+Kontakt: LinkedIn Bryan Pyka
+
+⸻
+
+© 2025 Bryan Pyka. Nur für Demonstrations- und Lehrzwecke.
+
