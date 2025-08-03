@@ -6,4 +6,5 @@ node_modules/
 *.log
 .DS_Store
 .vscode/
-prisma/client/
+prisma/client/.env
+backend/.env
