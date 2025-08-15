@@ -16,7 +16,7 @@ Mit übersichtlichem Dashboard, Pflanzenkatalog, personalisierten Erinnerungen (
 
 - **Persönlicher Pflanzenkatalog:** Eigene Pflanzen hinzufügen, Details einsehen, verwalten  
 - **Erinnerungen:** Automatische To-dos fürs Gießen, Düngen, Umtopfen  
-- **Wunschliste:** Lieblingspflanzen merken  
+- **Favoriten-/Wunschliste:** Lieblingspflanzen merken  
 - **Expertentipps:** Kontextbezogene Pflegehinweise  
 - **Gamification:** Levelsystem, Meilensteine, Statistiken  
 - **Responsives Design:** Optimal auf Desktop & Mobile  
@@ -41,8 +41,6 @@ Mit übersichtlichem Dashboard, Pflanzenkatalog, personalisierten Erinnerungen (
 ## Sicherheit & Datenschutz
 
 - Alle Verbindungen sind TLS/SSL-verschlüsselt
-- Keine sensiblen Keys im Repo:  
-  **Alle Zugangsdaten (.env, serviceAccountKey.json) sind geheim & werden als Secret-Files bei Render/Vercel genutzt**
 - Siehe [Impressum & Datenschutzerklärung](https://gardenguru-psi.vercel.app/impressum) in der App
 
 
