@@ -8,3 +8,6 @@ node_modules/
 .vscode/
 prisma/client/.env
 backend/.env
+.env
+.env.*
+*/.env
