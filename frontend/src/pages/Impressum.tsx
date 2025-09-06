@@ -11,11 +11,9 @@ export default function Impressum() {
         <h2 className="text-lg font-semibold mb-2">Angaben gemäß § 5 TMG</h2>
         <p className="break-words">
           Bryan Pyka<br />
-          Jörgelstraße 14<br />
           45475 Mülheim an der Ruhr<br />
           Deutschland<br />
           E-Mail: <a href="mailto:inbox@bryanpyka.de" className="underline break-words">inbox@bryanpyka.de</a><br />
-          Telefon: 0162 6885313
         </p>
       </section>
       <section className="mb-8">
@@ -42,7 +40,7 @@ export default function Impressum() {
           Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
         </p>
       </section>
-      <footer className="mt-10 text-xs text-gray-400">Letzte Aktualisierung: Juni 2025</footer>
+      <footer className="mt-10 text-xs text-gray-400">Letzte Aktualisierung: September 2025</footer>
     </div>
   );
 }
